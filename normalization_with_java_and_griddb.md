@@ -25,7 +25,7 @@ That's enough for the theory. Let's dive into something practical.
 ## Project Setup
 Our project implements a basic level of nornalization in Java and GridDB. Here is the project organiztion.
 
-![normalization-in-java-and-griddb](/uploads/normalization-in-java-griddb-project-strct.jpg "normalization-in-java-and-griddb")
+![normalization-in-java-and-griddb](normalization-in-java-griddb-project-strct.jpg "normalization-in-java-and-griddb")
 
 ### Required JAR files
 Our project requires a two JAR files `gridstore.jar` and `weka-3.7.0.jar`. Here, gridstore.jar is an official library for GridDB, and `weka-3.7.0.jar` is a Machine Learning library used for data analysis.
