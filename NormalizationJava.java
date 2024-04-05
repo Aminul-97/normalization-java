@@ -1,9 +1,14 @@
-package normalizationjava;
 import java.util.Properties;
 import java.util.Scanner;
 import java.io.File;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.io.InputStream;
+import java.io.ByteArrayInputStream;
+import java.nio.charset.Charset;
 
 import com.toshiba.mwcloud.gs.Collection;
 import com.toshiba.mwcloud.gs.GSException;
@@ -11,11 +16,14 @@ import com.toshiba.mwcloud.gs.GridStore;
 import com.toshiba.mwcloud.gs.GridStoreFactory;
 import com.toshiba.mwcloud.gs.Query;
 import com.toshiba.mwcloud.gs.RowKey;
+import com.toshiba.mwcloud.gs.Row;
 import com.toshiba.mwcloud.gs.RowSet;
 
 import weka.classifiers.Evaluation;
 import weka.classifiers.functions.LinearRegression;
 import weka.core.Instances;
+import weka.core.converters.ArffSaver;
+import weka.core.converters.ConverterUtils.DataSource;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Normalize;
 
