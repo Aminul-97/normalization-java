@@ -27,8 +27,12 @@ Our project implements a basic level of nornalization in Java and GridDB. Here i
 
 ![normalization-in-java-and-griddb](normalization-in-java-griddb-project-strct.jpg "normalization-in-java-and-griddb")
 
+To run this project, your system should have:
+- Java (Latest version)
+- GridDB
+
 ### Required JAR files
-Our project requires a two JAR files `gridstore.jar` and `weka-3.7.0.jar`. Here, gridstore.jar is an official library for GridDB, and `weka-3.7.0.jar` is a Machine Learning library used for data analysis.
+We need two JAR files `gridstore-5.5.0.jar` and `weka-3.7.0.jar`. Here, `gridstore-5.5.0.jar` is an official library for GridDB, and `weka-3.7.0.jar` is a Machine Learning library used for data analysis.
 
 Download the Weka JAR from the following URL:
 
@@ -70,10 +74,13 @@ import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Normalize;
 ```
+
+Well, that's the initial step.
+
 Let's move on to our next step.
 
 ## Creating a Class for Storing Data
-Our project requires to store data into a GridDB container. So, we need to define the container schema as a static class:
+Our project stores data in a GridDB container. So, we need to define the container schema as a static class:
 
 ```java
 static class House {
@@ -102,12 +109,12 @@ GridStore store = GridStoreFactory.getInstance().getGridStore(props);
 ```
 You may need to change these connection specifics based on your GridDB installation.
 
-After you successfully create your connection. It's time to create a container.
+Once you have successfully created your connection, it's time to create a collection.
 
 ```java
 Collection coll = store.putCollection("House", House.class);
 ```
-Here, we're creating a collection object `coll` for the container `House`.
+Here, we created a collection object `coll` for the container `House`.
 
 ## Push Data to GridDB
 Now we have our GridDB schema and our connection is ready to go.
