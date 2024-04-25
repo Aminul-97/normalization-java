@@ -5,6 +5,37 @@ Before we get started, Let's understand normalization first.
 ## What is Normalization?
 Normalization is a commonly used data preparation technique in Machine Learning that changes the values of columns in the dataset using a common scale. Normalization is required when a range of characteristics are present in the dataset.
 
+In our project, we're going to use the dataset `house.csv` that looks something like this:
+
+```text
+housesize,lotsize,bedrooms,granite,bathroom,sellingprice
+3529,9191,6,0,0,205000 
+3247,10061,5,1,1,224900 
+4032,10150,5,0,1,197900 
+2397,14156,4,1,0,189900
+2200,9600,4,0,1,195000
+3536,19994,6,1,1,325000
+2983,9365,5,0,1,230000
+```
+
+You can see that the dataset contains large numbers with different ranges, making it difficult to perform data analytics operations.  
+
+With normalization, we can simplify this dataset by changing the column values on a common scale, such as ranging column values between 0 and 1. Looks something like this.
+
+```text
+housesize,lotsize,bedrooms,granite,bathroom,sellingprice
+0.571507,0.080533,0.5,1,1,224900
+0.107533,0.459595,0,1,0,189900
+0.729258,1,1,1,1,325000
+0.725437,0,1,0,0,205000
+1,0.088772,0.5,0,1,197900
+0,0.03786,0,0,1,195000
+0.427402,0.016107,0.5,0,1,230000
+```
+You may notice that the column `sellingprice` remains unchanged. This is because the classifier must know which is our outcome variable. 
+
+That's why we set the column `sellingprice` as our class index for the dataset before passing it to the classifier. You will observe it practically later in this article.
+
 The following formula defines normalization mathematically.
 
 Xn = (X - Xmin) / (Xmax - Xmin)
@@ -14,6 +45,8 @@ Xn = Normalized value.
 Xmin = Minimum value of a feature.
 Xmax = Maximum value of a feature.
 
+## Types of Normalization
+
 Many types of normalization are available in machine learning. But the following types are widely used:
 
 **Min-Max Scaling:** This type of normalization subtracts the minimum value from the highest value of each column and divides it by the range. Each new column has a minimum value of 0 and a maximum value of 1.
@@ -21,6 +54,8 @@ Many types of normalization are available in machine learning. But the following
 **Standardization Scaling:** Also known as Z-score normalization centers a variable at zero and standardizes the variance at one. It first subtracts the mean of each observation and then divides it by the standard deviation.
 
 That's enough for the theory. Let's dive into something practical.
+
+## How to use Normalization?
 
 ## Project Setup
 Our project implements a basic level of nornalization in Java and GridDB. Here is the project organiztion.
@@ -40,7 +75,7 @@ http://www.java2s.com/Code/Jar/w/weka.htm
 
 Download the gridstore.jar from here:
 
-https://mvnrepository.com/artifact/com.github.griddb/gridstore-jdbc/5.3.0
+https://mvnrepository.com/artifact/com.github.griddb/gridstore-jdbc/5.5.0
 
 ### Import Packages
 For this project, we need some basic Java packages, such as:
